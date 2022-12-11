@@ -12,7 +12,7 @@ Developer Documentation - Railway Controller
     sidebar.
 
     * :doc:`intro`
-    * :doc:`node-communication`
+    * :doc:`nodes`
     * :doc:`glossary`
   
 .. toctree::
@@ -21,5 +21,5 @@ Developer Documentation - Railway Controller
     :maxdepth: 3
 
     intro
-    node-communication
+    nodes
     glossary

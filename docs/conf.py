@@ -62,13 +62,14 @@ else:
 # -- General configuration ---------------------------------------------------
 
 
-extensions = ['sphinxcontrib.bibtex']
+extensions = ['sphinxcontrib.bibtex', "sphinx.ext.autosectionlabel"]
 templates_path = ['_templates']
 source_suffix = ['.rst']
 master_doc = 'index'
 language = "en"
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 pygments_style = None
+autosectionlabel_prefix_document = True
 
 
 # -- Options for HTML output -------------------------------------------------
