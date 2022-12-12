@@ -106,6 +106,8 @@ control board over the users local network. A rendered version of the
 OpenAPI specification is available from
 https://docs.railwaycontroller.sidingsmedia.com/en/latest/_static/api.html.
 
+.. openapi:: ../specifications/commands/openapi.yaml
+
 Serial Commands
 ---------------
 

@@ -62,7 +62,12 @@ else:
 # -- General configuration ---------------------------------------------------
 
 
-extensions = ['sphinxcontrib.bibtex', "sphinx.ext.autosectionlabel"]
+extensions = [
+    "sphinxcontrib.bibtex",
+    "sphinx.ext.autosectionlabel",
+    "sphinxcontrib.openapi",
+    "sphinxcontrib.redoc"
+]
 templates_path = ['_templates']
 source_suffix = ['.rst']
 master_doc = 'index'
@@ -70,6 +75,15 @@ language = "en"
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 pygments_style = None
 autosectionlabel_prefix_document = True
+
+redoc = [
+    {
+        'name': 'Railway Controller Client Bridge API',
+        'page': 'api/clientbridge',
+        'spec': 'specifications/commands/openapi.yaml',
+        'embed': True,
+    },
+]
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -100,41 +114,6 @@ latex_elements = {
 
     # Additional stuff for the LaTeX preamble.
     'preamble': f'''
-        %%%%%%%%%%%%%%%%%%%% Meher %%%%%%%%%%%%%%%%%%
-        %%%add number to subsubsection 2=subsection, 3=subsubsection
-        %%% below subsubsection is not good idea.
-        \\setcounter{{secnumdepth}}{{3}}
-        %
-        %%%% Table of content upto 2=subsection, 3=subsubsection
-        \\setcounter{{tocdepth}}{{2}}
-
-        \\usepackage{{amsmath,amsfonts,amssymb,amsthm}}
-        \\usepackage{{graphicx}}
-
-        %%% reduce spaces for Table of contents, figures and tables
-        %%% it is used "\\addtocontents{{toc}}{{\\vskip -1.2cm}}" etc. in the document
-        \\usepackage[notlot,nottoc,notlof]{{}}
-
-        \\usepackage{{color}}
-        \\usepackage{{transparent}}
-        \\usepackage{{eso-pic}}
-        \\usepackage{{lipsum}}
-
-        \\usepackage{{footnotebackref}} %%link at the footnote to go to the place of footnote in the text
-
-        %% spacing between line
-        \\usepackage{{setspace}}
-        %%%%\\onehalfspacing
-        %%%%\\doublespacing
-        \\singlespacing
-
-
-        %%% page number
-        \\fancyfoot[CO, CE]{{\\thepage}}
-
-
-        \\RequirePackage{{tocbibind}} %%% comment this to remove page number for following
-        \\addto\\captionsenglish{{\\renewcommand{{\\contentsname}}{{Table of contents}}}}
         % \\addto\\captionsenglish{{\\renewcommand{{\\chaptername}}{{Chapter}}}}
 		%%%% Custom copyright
 		\\fancyfoot[LO,RE]{{Copyright \\textcopyright\\ 2022, Sidings Media. Licensed under CC-BY-SA-4.0}}
