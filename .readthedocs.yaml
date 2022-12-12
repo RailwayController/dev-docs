@@ -18,21 +18,23 @@ build:
     # nodejs: "16"
     # rust: "1.55"
     # golang: "1.17"
+  jobs:
+    pre_create_environment:
+      - echo "Command run at 'pre_create_environment' step"
 
 # Build documentation in the docs/ directory with Sphinx
 sphinx:
    configuration: docs/conf.py
 
 # If using Sphinx, optionally build your docs in additional formats such as PDF
-formats:
-   - pdf
+formats: all
 
 submodules:
-  include: 
-    - specifications
+  include: all
   recursive: true
 
 # Optionally declare the Python requirements required to build your docs
 python:
    install:
-   - requirements: docs/requirements.txt
+    - requirements: docs/requirements.txt
+      
