@@ -17,4 +17,5 @@ the network.
     :maxdepth: 2
     :glob:
 
-    nodes/*
+    nodes/types-of-node
+    nodes/node-communication

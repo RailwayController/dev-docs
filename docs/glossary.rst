@@ -29,3 +29,12 @@ Glossary
     node
         An individual board within the system that can accept and act
         upon commands.
+
+    client
+        An end users device that is running a form of railway controller
+        software used to interact with the network.
+
+    block
+        A section of track which should only ever have one train in it
+        at once. It is shown as occupied if there is a train within the
+        block.
