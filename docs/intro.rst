@@ -21,4 +21,39 @@ NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and
 "OPTIONAL" in this document are to be interpreted as described in
 `RFC 2119`_.
 
+Symbols
+-------
+
+Diagrams
+^^^^^^^^
+
+The following symbols are used in diagrams relating to the railway
+control system.
+
+.. note::
+    The text inside a shape is used to provide more detail on it's
+    purpose.
+
+.. figure:: images/client-symbol.png
+    
+    Symbol for client
+
+Client symbol
+
+.. figure:: images/bridge-symbol.png
+
+    Symbol for :term:`bridge`
+
+.. figure:: images/control-node-symbol.png
+
+    Symbol for :term:`control node`
+
+.. figure:: images/command-node-symbol.png
+    
+    Symbol for :term:`command node`
+
+.. figure:: images/wire-symbol.png
+
+    Symbol for board interconnects
+
 .. _`RFC 2119`: https://www.rfc-editor.org/rfc/rfc2119.html

@@ -1,10 +1,8 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: Railway Controller
+Upstream-Name: Railway Controller - Dev Docs
 Upstream-Contact: Sidings Media <contact@sidingsmedia.com>
 Source: 
 
-# Sample paragraph, commented out:
-#
-# Files: src/*
-# Copyright: $YEAR $NAME <$CONTACT>
-# License: ...
+Files: docs/images/*
+Copyright: 2022 Sidings Media <contact@sidingsmedia.com>
+License: CC-BY-SA-4.0

@@ -6,7 +6,7 @@ import subprocess
 
 # -- Project information -----------------------------------------------------
 
-project = 'Developer Documentation - Railway Controller'
+project = 'Railway Controller - Devs'
 copyright = '2022, Sidings Media'
 author = 'Sidings Media'
 
@@ -92,7 +92,7 @@ html_theme = "furo"
 html_static_path = ['_static']
 html_css_files = ["css/rtd-version.css"]
 html_js_files = ["js/commithash.js"]
-html_title = "Railway Controller"
+html_title = "Railway Controller - Devs"
 
 #html_js_files = [ ]
 #html_logo = '_static/track-bw-square-192.png'
@@ -168,7 +168,7 @@ latex_elements = {
 
 latex_show_urls = 'footnote'
 latex_documents = [
-    (master_doc, 'railwaycontroller.tex', 'Railway Controller',
+    (master_doc, 'railwaycontroller.tex', 'Railway Controller - Devs',
      'Sidings Media', 'manual'),
 ]
 
@@ -176,7 +176,7 @@ latex_documents = [
 # -- Options for manual page output ------------------------------------------
 
 man_pages = [
-    (master_doc, 'railwaycontrollerdev', 'Developer Documentation - Railway Controller',
+    (master_doc, 'railwaycontrollerdev', 'Railway Controller - Devs',
      [author], 1)
 ]
 
@@ -187,7 +187,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'railwaycontrollerdev', 'Developer Documentation - Railway Controller',
+    (master_doc, 'railwaycontrollerdev', 'Railway Controller - Devs',
      author, 'SidingsMedia', 'Documentation relating to the Railway Controller project',
      'Miscellaneous'),
 ]
