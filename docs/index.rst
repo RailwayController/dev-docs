@@ -12,6 +12,7 @@ Developer Documentation - Railway Controller
     sidebar.
 
     * :doc:`intro`
+    * :doc:`architecture`
     * :doc:`nodes`
     * :doc:`glossary`
   
@@ -21,5 +22,6 @@ Developer Documentation - Railway Controller
     :maxdepth: 3
 
     intro
+    architecture
     nodes
     glossary

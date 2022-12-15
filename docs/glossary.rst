@@ -1,7 +1,8 @@
+.. SPDX-FileCopyrightText: 2022 Sidings Media <contact@sidingsmedia.com>
+.. SPDX-License-Identifier: CC-BY-SA-4.0
+
 Glossary
 ========
-
-
 
 .. glossary::
     :sorted:
@@ -38,3 +39,9 @@ Glossary
         A section of track which should only ever have one train in it
         at once. It is shown as occupied if there is a train within the
         block.
+
+.. raw:: latex
+
+    \listoftables
+    \listoffigures
+    \listof{literalblock}{List of Code Blocks}

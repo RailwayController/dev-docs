@@ -75,6 +75,7 @@ language = "en"
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 pygments_style = None
 autosectionlabel_prefix_document = True
+numfig = True
 
 redoc = [
     {
@@ -115,6 +116,38 @@ latex_elements = {
 
     # Additional stuff for the LaTeX preamble.
     'preamble': f'''
+        %% --------------------------------------------------
+        %% |:sec:| add list of figures, list of tables, list of code blocks to TOC
+        %% --------------------------------------------------
+        \\makeatletter
+        \\renewcommand{{\sphinxtableofcontents}}{{%
+        %
+        % before resetting page counter, let's do the right thing.
+        \\if@openright\\cleardoublepage\\else\\clearpage\\fi
+        \\pagenumbering{{roman}}%
+        \\begingroup
+            \\parskip \\z@skip
+            \\tableofcontents
+        \\endgroup
+        %
+        %% addtional lists
+        \\if@openright\\cleardoublepage\\else\\clearpage\\fi
+        \\addcontentsline{{toc}}{{chapter}}{{List of Figures}}%
+        \\listoffigures
+        %
+        \\if@openright\\cleardoublepage\\else\\clearpage\\fi
+        \\addcontentsline{{toc}}{{chapter}}{{List of Tables}}%
+        \\listoftables
+        %
+        \\if@openright\\cleardoublepage\\else\\clearpage\\fi
+        \\addcontentsline{{toc}}{{chapter}}{{List of Code Blocks}}%
+        \\listof{{literalblock}}{{List of Code Blocks}}%
+        %
+        \\if@openright\\cleardoublepage\\else\\clearpage\\fi
+        \\pagenumbering{{arabic}}%
+        }}
+        \\makeatother
+
         % \\addto\\captionsenglish{{\\renewcommand{{\\chaptername}}{{Chapter}}}}
 		%%%% Custom copyright
 		\\fancyfoot[LO,RE]{{Copyright \\textcopyright\\ 2022, Sidings Media. Licensed under CC-BY-SA-4.0}}
