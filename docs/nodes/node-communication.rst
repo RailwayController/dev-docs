@@ -29,6 +29,7 @@ the registers are used to control the functionality of each node.
 Each register has a locally unique address in the following format:
 
 .. code-block:: abnf
+    :caption: ABNF specification for a registers address
 
     register-addr   =       1*(ALPHA / %x2D / %x5F)
                                 ; Only support alphanumeric characters as
@@ -61,6 +62,7 @@ correct interoperation of all nodes.
         following format.
 
         .. code-block:: abnf
+            :caption: ABNF specification for register list
 
             register-list   =       *(register-addr %x4C)
                                         ; 0 or more register addresses
