@@ -38,8 +38,6 @@ control system.
     
     Symbol for client
 
-Client symbol
-
 .. figure:: images/bridge-symbol.png
 
     Symbol for :term:`bridge`
