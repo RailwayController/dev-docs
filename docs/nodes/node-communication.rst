@@ -94,8 +94,11 @@ correct interoperation of all nodes.
         A string representing the current firmware version installed on
         the node. This SHOULD be filled in on all nodes.
 
+Client to Node
+--------------
+
 REST API
---------
+^^^^^^^^
 
 This is used as the main form of communication between a :term:`client
 bridge` and a :term:`client`. The specification is defined using the
@@ -103,22 +106,37 @@ bridge` and a :term:`client`. The specification is defined using the
 routes is also available at the end of this document. An `interactive
 version`_ of the OpenAPI documentation is also available.
 
-.. openapi:: ../specifications/commands/openapi.yaml
+.. openapi:: ../specifications/REST-API/openapi.yaml
+
+Bootloader
+^^^^^^^^^^
+
+The client may, in order to complete some actions, decide to communicate
+with the bootloader interface of a :term:`node`. If this is the case,
+the `reset` command should be issued to the board, and then any
+character send along the USB interface after approximately 1 second.
+This is to interupt the boot process. Various commands may then be sent
+to the bootloader as detailed below.
+
+.. literalinclude:: ../specifications/serial/client-node.abnf
+    :language: abnf
+    :caption: ABNF specification for client to node serial communication
+
+Node to Node
+------------
 
 Serial Commands
----------------
+^^^^^^^^^^^^^^^
 
 Serial commands are used for inter-node communication in almost all
 cases. Most nodes are connected via serial communication mediums such as
 I2C, UART and sockets. In these cases, the below specification for
 serial commands should be used. 
 
-These commands are loosely inspired by SQL statements. It is possible to
-send multiple commands at once, seperated by the ``;`` character with a
-carriage return and line feed being sent to indicate the end of all
-commands. There are two types of command, the ``get`` command and the
-``set`` command. As the names suggest, ``get`` commands retrieve a value
-from a register and ``set`` commands set the value of a register.
+These commands are loosely inspired by SQL statements. There are two
+types of command, the ``get`` command and the ``set`` command. As the
+names suggest, ``get`` commands retrieve a value from a register and
+``set`` commands set the value of a register.
 
 In most cases, it is required to state the address of the node the
 command is being sent to. This is to facilitate the command traversing
@@ -128,85 +146,9 @@ to devices directly connected on the I2C bus. This is possible as the
 address is already specified by the :term:`command node` when sending
 the command over the I2C bus.
 
-.. code-block:: abnf
-    :caption: ABNF specification for serial command
-
-    ; Commands
-    command         =       1*query CRLF
-                                ; Multiple commands may be sent at once.
-                                ;   CRLF indicates end of commands
-
-    query           =       (set / get) [SP addr] %x3B
-                                ; SQL like format. Split queries using ;
-                                ;   Address is only required when sending
-                                ;   commands via an interface card. I.e.
-                                ;   when being sent over the network. It is
-                                ;   not required for direct I2C interfaces.
-                                ;   Also used for commands between client 
-                                ;   interface cards and the main controller
-
-    get             =       "get" SP register-addr
-                                ; GET commands used to retrieve data from
-                                ;   registers
-
-    set             =       "set" SP register-addr %x3D register-val
-                                ; SET commands used to set the value of a
-                                ;   register
-
-    addr            =       "at" SP node-addr
-
-    ; Command option values
-    register-addr   =       string-val
-
-    node-val        =       hex-val
-                            / IPv6address
-
-    register-val    =       string-val
-                            / bin-val
-                            / bool-val
-                            / hex-val
-                            / int-val
-                            / signed-int-val   
-                            / null-val
-
-    string-val      =       1*(ALPHA / %x2D / %x5F)
-                                ; Only support alphanumeric characters as
-                                ; well as - and _ 
-
-    bin-val         =       "0b" 1*BIT
-
-    bool-val        =       "true" / "false"
-
-    hex-val         =       "0x" 1*HEXDIG
-
-    int-val         =       1*DIGIT
-
-    signed-int-val  =       [%x2d] int
-
-    null-val        =       "null"
-
-    ;IPv6 Address from RFC5954
-    IPv6address     =       6( h16 ":" ) ls32
-                            / "::" 5( h16 ":" ) ls32
-                            / [               h16 ] "::" 4( h16 ":" ) ls32
-                            / [ *1( h16 ":" ) h16 ] "::" 3( h16 ":" ) ls32
-                            / [ *2( h16 ":" ) h16 ] "::" 2( h16 ":" ) ls32
-                            / [ *3( h16 ":" ) h16 ] "::"    h16 ":"   ls32
-                            / [ *4( h16 ":" ) h16 ] "::"              ls32
-                            / [ *5( h16 ":" ) h16 ] "::"              h16
-                            / [ *6( h16 ":" ) h16 ] "::"
-
-    h16             =       1*4HEXDIG
-
-    ls32            =       ( h16 ":" h16 ) / IPv4address
-
-    IPv4address     =       dec-octet "." dec-octet "." dec-octet "." dec-octet
-
-    dec-octet       =       DIGIT                   ; 0-9
-                            / %x31-39 DIGIT         ; 10-99
-                            / "1" 2DIGIT            ; 100-199
-                            / "2" %x30-34 DIGIT     ; 200-249
-                            / "25" %x30-35          ; 250-255
+.. literalinclude:: ../specifications/serial/node-node.abnf
+    :language: abnf
+    :caption: ABNF specification for node to node serial communication
 
 
 .. _`RFC 5234`: https://www.rfc-editor.org/rfc/rfc5234.html
