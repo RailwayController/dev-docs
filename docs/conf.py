@@ -81,7 +81,7 @@ redoc = [
     {
         'name': 'Railway Controller Client Bridge API',
         'page': 'api/clientbridge',
-        'spec': 'specifications/commands/openapi.yaml',
+        'spec': 'specifications/REST-API/openapi.yaml',
         'embed': True,
     },
 ]
